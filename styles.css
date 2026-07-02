@@ -377,7 +377,7 @@ h1,h2,h3,h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1.05
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s;
 }
 .field input::placeholder, .field textarea::placeholder { color: #8A7A63; }
-.field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A1E2C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .9rem center; padding-right: 2.4rem; }
+.field select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237A1E2C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .9rem center; padding-right: 2.4rem; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent-3); box-shadow: 0 0 0 3px rgba(122,30,44,.2); background: #fff; }
 .field textarea { resize: vertical; min-height: 96px; }
 .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #b0303f; box-shadow: 0 0 0 3px rgba(176,48,63,.18); }
@@ -391,6 +391,8 @@ h1,h2,h3,h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1.05
 .stars { color: #D9A441; letter-spacing: .12em; font-size: 1.05rem; margin-bottom: .7rem; }
 .review-card blockquote { color: var(--ink); font-size: 1.02rem; }
 .review-card figcaption { margin-top: 1rem; color: var(--ink-mute); font-size: .9rem; font-style: normal; }
+.reviews-fb-link { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 3px; }
+.reviews-fb-link:hover { color: var(--ink); }
 .reviews-disclaimer { text-align: center; color: var(--ink-mute); font-size: .82rem; margin-top: 1.6rem; }
 
 /* ---------- service area ---------- */
