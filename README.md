@@ -45,6 +45,21 @@ frameworks, no npm. The only external resource is a single Google Fonts `<link>`
 everything else — icons, illustrations, the service-area "map" — is inline SVG or CSS. Motion
 respects `prefers-reduced-motion`.
 
+## SEO
+
+On-page SEO is built in: unique `<title>` + meta description, a single `<h1>`, complete Open Graph
++ Twitter Card tags, a `<link rel="canonical">`, and **JSON-LD structured data** (`@type: AutoRepair`,
+modeling the mobile powersports business — `name`, `telephone`, `url`, `image`, `priceRange`,
+`areaServed` for Prairieville / Baton Rouge / Ascension Parish, and `sameAs` Facebook). Because the
+business is fully mobile with no storefront, **no street address / geo is emitted** — only
+`areaServed`. `robots.txt` and `sitemap.xml` live at the repo root.
+
+**Base URL placeholder:** the canonical URL, `og:url`, `og:image`, sitemap `<loc>`, robots `Sitemap:`
+line, and the JSON-LD `url`/`image` all use the literal placeholder `https://REPLACE-WITH-DOMAIN.com/`.
+Before deploy, do a single find-and-replace of `REPLACE-WITH-DOMAIN.com` with the real domain across
+`index.html`, `robots.txt`, and `sitemap.xml`. (Also drop a real share image at
+`assets/photos/og-image.jpg`, referenced by the OG/Twitter/schema `image`.)
+
 ## How to view
 
 Just **open `index.html`** by double-clicking it, or serve the folder with any static server.

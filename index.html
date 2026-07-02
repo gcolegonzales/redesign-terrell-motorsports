@@ -5,17 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terrell Motorsports LLC — Mobile Powersports Repair | Prairieville & Baton Rouge, LA</title>
   <meta name="description" content="Mobile powersports repair &amp; maintenance in Prairieville and the greater Baton Rouge area. We come to you — motorcycles, dirt bikes, ATVs, UTVs &amp; watercraft. Factory-trained, 13 years experience. Call (225) 363-8923." />
-  <meta name="theme-color" content="#12140f" />
+  <meta name="theme-color" content="#17120F" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://REPLACE-WITH-DOMAIN.com/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Terrell Motorsports LLC — We Come To You" />
   <meta property="og:description" content="Mobile powersports repair for motorcycles, dirt bikes, ATVs, UTVs &amp; watercraft. Serving Prairieville &amp; greater Baton Rouge." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://REPLACE-WITH-DOMAIN.com/" />
+  <meta property="og:image" content="https://REPLACE-WITH-DOMAIN.com/assets/photos/og-image.jpg" />
+  <meta property="og:site_name" content="Terrell Motorsports LLC" />
 
-  <!-- Single Google Fonts link: Oswald (condensed display) + Inter (body) -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Terrell Motorsports LLC — We Come To You" />
+  <meta name="twitter:description" content="Mobile powersports repair for motorcycles, dirt bikes, ATVs, UTVs &amp; watercraft. Serving Prairieville &amp; greater Baton Rouge." />
+  <meta name="twitter:image" content="https://REPLACE-WITH-DOMAIN.com/assets/photos/og-image.jpg" />
+
+  <!-- JSON-LD structured data: AutoRepair (mobile powersports — no storefront) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Terrell Motorsports LLC",
+    "description": "Fully mobile powersports repair and maintenance for motorcycles, dirt bikes, ATVs, UTVs and watercraft. Factory-trained tech with 13 years of experience — we come to you across Prairieville and the greater Baton Rouge area.",
+    "url": "https://REPLACE-WITH-DOMAIN.com/",
+    "image": "https://REPLACE-WITH-DOMAIN.com/assets/photos/og-image.jpg",
+    "telephone": "+12253638923",
+    "priceRange": "$$",
+    "areaServed": [
+      { "@type": "City", "name": "Prairieville", "addressRegion": "LA" },
+      { "@type": "City", "name": "Baton Rouge", "addressRegion": "LA" },
+      { "@type": "City", "name": "Gonzales", "addressRegion": "LA" },
+      { "@type": "City", "name": "Geismar", "addressRegion": "LA" },
+      { "@type": "City", "name": "Dutchtown", "addressRegion": "LA" },
+      { "@type": "City", "name": "St. Amant", "addressRegion": "LA" },
+      { "@type": "City", "name": "Denham Springs", "addressRegion": "LA" },
+      { "@type": "AdministrativeArea", "name": "Ascension Parish", "addressRegion": "LA" }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/minemofonotyoz/"
+    ]
+  }
+  </script>
+
+  <!-- Single Google Fonts link: Anton (heavy vintage display) + Oswald (condensed) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -83,14 +122,14 @@
           </span>
 
           <h1 class="hero-title">
-            Got a bike sitting because it <span class="accent">won't run?</span>
-            <span class="hero-title-sub">We'll come to your driveway and fix it.</span>
+            We bring the <span class="accent">shop</span> to you.
+            <span class="hero-title-sub">Mobile motorcycle, ATV, UTV &amp; watercraft repair across Prairieville and the greater Baton Rouge area.</span>
           </h1>
 
           <p class="hero-lede">
-            Terrell Motorsports is a <strong>mobile</strong> powersports repair &amp; maintenance shop
-            serving Prairieville and the greater Baton Rouge area. Factory-trained tech, 13 years
-            of experience, reasonable pricing — <strong>without the wait or the hauling.</strong>
+            Terrell Motorsports is a <strong>fully mobile</strong> powersports repair and maintenance
+            service. A factory-trained tech with 13 years of experience comes to your driveway —
+            <strong>fair pricing, fast turnaround, and no hauling.</strong>
           </p>
 
           <div class="hero-actions">
@@ -106,6 +145,7 @@
             <li><strong>100%</strong><span>Recommended</span></li>
             <li><strong>0 mi</strong><span>You have to drive</span></li>
           </ul>
+          <!-- kept short: mobile advantage stated as zero driving for the customer -->
         </div>
 
         <!-- Hero visual: CSS/SVG mechanical badge, no external photo -->
@@ -113,20 +153,40 @@
         <div class="hero-visual" aria-hidden="true">
           <div class="visual-panel">
             <div class="visual-shine"></div>
-            <svg class="visual-wrench" viewBox="0 0 200 200" width="200" height="200">
+            <svg class="visual-wrench" viewBox="0 0 200 200" width="220" height="220" role="img" aria-hidden="true">
               <defs>
-                <linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#ff7a1a"/>
-                  <stop offset="1" stop-color="#ffb454"/>
-                </linearGradient>
+                <path id="badgeTop" d="M100 100 m-72 0 a72 72 0 0 1 144 0" fill="none"/>
+                <!-- lower arc drawn LEFT-TO-RIGHT along the bottom so the text reads upright -->
+                <path id="badgeBottom" d="M100 100 m-64 0 a64 64 0 0 0 128 0" fill="none"/>
               </defs>
-              <circle cx="100" cy="100" r="86" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
-              <circle cx="100" cy="100" r="86" fill="none" stroke="url(#wg)" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"/>
-              <g transform="translate(100 100)">
-                <path transform="rotate(-40)" d="M-8-52a20 20 0 0 0 8 38v66a12 12 0 0 0 24 0v-66a20 20 0 0 0-8-38l-2 20a10 10 0 0 1-20 0Z" fill="url(#wg)"/>
+              <!-- outer badge rings (worn/stamped) -->
+              <circle cx="100" cy="100" r="90" fill="none" stroke="var(--badge-ink)" stroke-width="3"/>
+              <circle cx="100" cy="100" r="82" fill="none" stroke="var(--badge-ink)" stroke-width="1.4" stroke-dasharray="3 5"/>
+              <!-- curved badge text -->
+              <text fill="var(--badge-ink)" font-family="'Oswald','Arial Narrow',sans-serif" font-weight="700" letter-spacing="3" font-size="14">
+                <textPath href="#badgeTop" startOffset="50%" text-anchor="middle">TERRELL MOTORSPORTS</textPath>
+              </text>
+              <text fill="var(--badge-ink)" font-family="'Oswald','Arial Narrow',sans-serif" font-weight="600" letter-spacing="4" font-size="11">
+                <textPath href="#badgeBottom" startOffset="50%" text-anchor="middle">WE COME TO YOU</textPath>
+              </text>
+              <!-- side stars -->
+              <text x="24" y="105" fill="var(--badge-ink)" font-size="12" text-anchor="middle">★</text>
+              <text x="176" y="105" fill="var(--badge-ink)" font-size="12" text-anchor="middle">★</text>
+              <!-- crossed wrenches -->
+              <g transform="translate(100 96)" fill="none" stroke="var(--badge-ink)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+                <g transform="rotate(45)">
+                  <path d="M0-34 v68"/>
+                  <path d="M-9-40 a13 13 0 1 0 18 0 l-4 11 h-10 z"/>
+                  <path d="M-9 40 a13 13 0 1 1 18 0 l-4 -11 h-10 z"/>
+                </g>
+                <g transform="rotate(-45)">
+                  <path d="M0-34 v68"/>
+                  <path d="M-9-40 a13 13 0 1 0 18 0 l-4 11 h-10 z"/>
+                  <path d="M-9 40 a13 13 0 1 1 18 0 l-4 -11 h-10 z"/>
+                </g>
               </g>
             </svg>
-            <div class="visual-caption">FACTORY-TRAINED · MOBILE</div>
+            <span class="visual-plate">EST. · LOUISIANA · MOBILE</span>
           </div>
         </div>
       </div>
@@ -148,8 +208,8 @@
       <div class="container">
         <header class="section-head reveal">
           <span class="eyebrow">What We Fix</span>
-          <h2>Anything with a motor, we've got it.</h2>
-          <p>Repairs and maintenance for every kind of powersports machine — done on-site, in your driveway or garage.</p>
+          <h2>Powersports repair, done on-site.</h2>
+          <p>Repairs and maintenance for every kind of powersports machine — handled in your driveway or garage, not ours.</p>
         </header>
 
         <div class="service-grid">
@@ -166,7 +226,7 @@
               <svg viewBox="0 0 48 48" width="40" height="40"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="35" r="7"/><circle cx="38" cy="35" r="7"/><path d="M10 35l8-9 6 4 5-9 4 14"/><path d="M18 26h9"/><path d="M27 21l7-2 3 5"/></g></svg>
             </span>
             <h3>Dirt Bikes</h3>
-            <p>Top-end rebuilds, jetting, suspension, chains and sprockets — race-day ready without the trailer trip.</p>
+            <p>Top-end rebuilds, jetting, suspension, chains and sprockets — ready for race day, no trailer required.</p>
           </article>
 
           <article class="card service-card reveal">
@@ -174,7 +234,7 @@
               <svg viewBox="0 0 48 48" width="40" height="40"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="34" r="6.5"/><circle cx="37" cy="34" r="6.5"/><path d="M6 27h9l4-6h12l4 6h4"/><path d="M17 21l2-5h10l2 5"/></g></svg>
             </span>
             <h3>ATVs</h3>
-            <p>Four-wheeler diagnostics, drivetrain, cooling, valves and seasonal service — fixed where it sits.</p>
+            <p>Four-wheeler diagnostics, drivetrain, cooling, valves and seasonal service — handled right at your place.</p>
           </article>
 
           <article class="card service-card reveal">
@@ -190,12 +250,12 @@
               <svg viewBox="0 0 48 48" width="40" height="40"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 30h30l-4 8H14a7 7 0 0 1-7-8Z"/><path d="M12 30l3-11h11l6 11"/><path d="M18 19v-4h5"/><path d="M6 41c2-1.6 4-1.6 6 0s4 1.6 6 0 4-1.6 6 0 4 1.6 6 0 4-1.6 6 0"/></g></svg>
             </span>
             <h3>Watercraft / Jet Skis</h3>
-            <p>PWC winterizing, impellers, no-starts and full servicing so you're ready before the water warms up.</p>
+            <p>PWC winterizing, impellers, no-starts and full servicing so you're ready before the season starts.</p>
           </article>
 
           <article class="card service-card service-card--cta reveal">
             <h3>Not sure who to call?</h3>
-            <p>If it has a motor and it's sitting, we can probably fix it. Ask us.</p>
+            <p>If it has a motor, there's a good chance we can help. Reach out and we'll let you know.</p>
             <a class="btn btn-primary" href="#quote">Get a Free Quote</a>
           </article>
         </div>
@@ -236,7 +296,7 @@
               <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5"/></svg>
             </div>
             <h3>Fixed — no hauling</h3>
-            <p>Most jobs are done on the spot. You never load a ramp or pay a tow. Back to riding fast.</p>
+            <p>Most jobs are done on the spot. No ramps, no tow bills, and no waiting weeks for a shop slot.</p>
           </li>
         </ol>
 
@@ -252,8 +312,8 @@
         <div class="why-layout">
           <header class="section-head section-head--left reveal">
             <span class="eyebrow">Why Terrell Motorsports</span>
-            <h2>The shop comes to you — and it's run by a pro.</h2>
-            <p>You get dealership-level skill without the dealership runaround, the tow bill, or the two-week wait.</p>
+            <h2>Dealership-level skill, right in your driveway.</h2>
+            <p>Get the expertise of a professional shop without the runaround, the tow bill, or the two-week wait.</p>
             <a class="btn btn-primary btn-lg why-cta-btn" href="#quote">Get a Free Quote</a>
           </header>
 
@@ -295,9 +355,9 @@
     <section class="section quote" id="quote">
       <div class="container quote-inner">
         <div class="quote-copy reveal">
-          <span class="eyebrow">Money-back-your-time Feature</span>
+          <span class="eyebrow">Request Service</span>
           <h2>Request mobile service</h2>
-          <p>Fill this out and we'll get back to you fast with a quote and a time to come out. Prefer to talk it through? Just tap to call.</p>
+          <p>Send us the details and we'll follow up quickly with a quote and a time to come out. Prefer to talk it through? Just tap to call.</p>
 
           <a class="btn btn-call btn-lg quote-call" href="tel:+12253638923">
             <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1l-2.23 2.2Z"/></svg>
@@ -372,7 +432,7 @@
         <div class="review-grid">
           <figure class="card review-card reveal">
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <blockquote>My four-wheeler had been sitting dead in the garage for a year. He came to the house, figured it out same day, and it fired right up. Didn't have to trailer it anywhere.</blockquote>
+            <blockquote>My four-wheeler hadn't run in a year. He came to the house, figured it out same day, and it fired right up. Didn't have to trailer it anywhere.</blockquote>
             <figcaption>— Ascension Parish rider</figcaption>
           </figure>
 
@@ -414,15 +474,32 @@
 
         <!-- Stylized CSS/SVG "map" placeholder, no external tiles -->
         <!-- data-photo: could be replaced with a branded static map graphic of the service radius -->
-        <div class="area-map reveal" aria-hidden="true">
+        <div class="area-map reveal">
           <div class="map-face">
-            <span class="map-ring map-ring-1"></span>
-            <span class="map-ring map-ring-2"></span>
-            <span class="map-ring map-ring-3"></span>
-            <span class="map-pin">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-            </span>
-            <span class="map-label">Prairieville, LA</span>
+            <svg class="map-svg" viewBox="0 0 520 440" role="img" aria-label="Service area map centered on Prairieville, Louisiana, covering Ascension Parish and the greater Baton Rouge area">
+              <path class="map-river" d="M92 -8 C70 64 128 112 100 178 C78 236 58 306 116 378 C138 406 130 432 150 460"/>
+              <path class="map-road" d="M132 116 C190 150 226 208 300 250 C342 274 384 300 436 300"/>
+              <path class="map-road" d="M150 120 C210 100 250 92 300 96 C352 100 404 110 474 94"/>
+              <path class="map-road map-road--minor" d="M46 248 C160 240 236 236 300 236 C368 236 440 248 512 246"/>
+              <circle class="map-radius-fill" cx="286" cy="238" r="182"/>
+              <circle class="map-radius-ring" cx="286" cy="238" r="182"/>
+              <circle class="map-radius-ring map-radius-ring--inner" cx="286" cy="238" r="104"/>
+              <g class="map-town"><circle cx="150" cy="122" r="4"/><text x="150" y="110">Baton Rouge</text></g>
+              <g class="map-town"><circle cx="300" cy="94" r="4"/><text x="300" y="82">Denham Springs</text></g>
+              <g class="map-town"><circle cx="228" cy="306" r="4"/><text x="228" y="324">Dutchtown</text></g>
+              <g class="map-town"><circle cx="340" cy="332" r="4"/><text x="340" y="350">Gonzales</text></g>
+              <g class="map-town"><circle cx="176" cy="372" r="4"/><text x="176" y="390">Geismar</text></g>
+              <g class="map-town"><circle cx="384" cy="286" r="4"/><text x="384" y="274">St. Amant</text></g>
+              <g class="map-hub">
+                <circle class="map-hub-halo" cx="286" cy="238" r="17"/>
+                <path class="map-hub-pin" d="M286 213 a16 16 0 0 0 -16 16 c0 12 16 29 16 29 s16 -17 16 -29 a16 16 0 0 0 -16 -16 Z"/>
+                <circle cx="286" cy="229" r="5.5" fill="#17120F"/>
+                <text class="map-hub-label" x="286" y="292">PRAIRIEVILLE · HOME BASE</text>
+              </g>
+              <path class="map-compass-arrow" d="M493 20 l6 14 -6 -4 -6 4 Z"/>
+              <text class="map-compass" x="493" y="52">N</text>
+              <text class="map-legend" x="22" y="422">We come to you — anywhere in this zone</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -431,8 +508,8 @@
     <!-- ============ FINAL CTA ============ -->
     <section class="section final-cta">
       <div class="container final-inner reveal">
-        <h2>Bike, quad, or ski sitting because it won't run?</h2>
-        <p>Stop letting it collect dust. We'll come to you and get it running again.</p>
+        <h2>Ready when you are.</h2>
+        <p>Bike, quad, or ski that needs attention? We'll come to you and get it back in shape.</p>
         <div class="hero-actions final-actions">
           <a class="btn btn-primary btn-lg" href="#quote">Request Mobile Service</a>
           <a class="btn btn-ghost btn-lg" href="tel:+12253638923">
