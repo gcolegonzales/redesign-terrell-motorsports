@@ -55,8 +55,8 @@ business is fully mobile with no storefront, **no street address / geo is emitte
 `areaServed`. `robots.txt` and `sitemap.xml` live at the repo root.
 
 **Base URL placeholder:** the canonical URL, `og:url`, `og:image`, sitemap `<loc>`, robots `Sitemap:`
-line, and the JSON-LD `url`/`image` all use the literal placeholder `https://REPLACE-WITH-DOMAIN.com/`.
-Before deploy, do a single find-and-replace of `REPLACE-WITH-DOMAIN.com` with the real domain across
+line, and the JSON-LD `url`/`image` all use the literal placeholder `https://terrellmotorsports.com/`.
+Before deploy, do a single find-and-replace of `terrellmotorsports.com` with the real domain across
 `index.html`, `robots.txt`, and `sitemap.xml`. (Also drop a real share image at
 `assets/photos/og-image.jpg`, referenced by the OG/Twitter/schema `image`.)
 
