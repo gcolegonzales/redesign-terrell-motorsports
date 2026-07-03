@@ -45,28 +45,77 @@
     mobileNav.hidden = false;
     navScrim.hidden = false;
     var navOpen = false;
+
+    // Everything on the page that should be hidden from AT / tab order when the
+    // drawer is open (the drawer + toggle stay reachable).
+    var pageRegions = [doc.querySelector(".site-header"), doc.getElementById("main"), doc.querySelector(".site-footer"), doc.querySelector(".mobile-call-bar")];
+    var setInert = function (on) {
+      pageRegions.forEach(function (el) {
+        if (!el) return;
+        if (on) { el.setAttribute("aria-hidden", "true"); el.setAttribute("inert", ""); }
+        else { el.removeAttribute("aria-hidden"); el.removeAttribute("inert"); }
+      });
+    };
+
+    var focusableInDrawer = function () {
+      return Array.prototype.filter.call(
+        mobileNav.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'),
+        function (el) { return el.offsetParent !== null || el.getClientRects().length; }
+      );
+    };
+
+    var onTrapKey = function (e) {
+      if (e.key !== "Tab") return;
+      var f = focusableInDrawer();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+
     var setNav = function (open) {
       navOpen = open;
       navToggle.setAttribute("aria-expanded", String(open));
       navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       mobileNav.classList.toggle("open", open);
       navScrim.classList.toggle("open", open);
+      doc.documentElement.style.overflow = open ? "hidden" : "";
       doc.body.style.overflow = open ? "hidden" : "";
+      // When closed, take the off-canvas links out of the tab order entirely.
+      mobileNav.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) {
+        setInert(true);
+        mobileNav.addEventListener("keydown", onTrapKey);
+        var f = focusableInDrawer();
+        if (f.length) window.setTimeout(function () { f[0].focus(); }, 60);
+      } else {
+        setInert(false);
+        mobileNav.removeEventListener("keydown", onTrapKey);
+      }
     };
-    navToggle.addEventListener("click", function () { setNav(!navOpen); });
-    // close when a link is tapped
+    // initialize closed state (removes drawer links from tab order)
+    mobileNav.setAttribute("aria-hidden", "true");
+    navToggle.addEventListener("click", function () {
+      var willOpen = !navOpen;
+      setNav(willOpen);
+      if (!willOpen) navToggle.focus();
+    });
+    // close when a link is tapped (let the anchor navigate; return focus to toggle)
     mobileNav.addEventListener("click", function (e) {
       if (e.target.closest("a")) setNav(false);
     });
     // close when the scrim (page area) is tapped
-    navScrim.addEventListener("click", function () { setNav(false); });
-    // close on Escape
-    doc.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && navOpen) setNav(false);
+    navScrim.addEventListener("click", function () {
+      setNav(false);
+      navToggle.focus();
     });
-    // close on resize to desktop
+    // close on Escape, returning focus to the toggle
+    doc.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navOpen) { setNav(false); navToggle.focus(); }
+    });
+    // reset drawer + toggle state when crossing the desktop breakpoint
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 760) setNav(false);
+      if (window.innerWidth > 760 && navOpen) setNav(false);
     });
   }
 
