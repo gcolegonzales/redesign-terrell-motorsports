@@ -11,36 +11,58 @@
   var yearEl = doc.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- sticky header shrink ---- */
+  /* ---- sticky header: shrink + reveal on any upward scroll ---- */
   var header = doc.querySelector(".site-header");
+  var lastY = window.scrollY;
   var onScroll = function () {
     if (!header) return;
-    if (window.scrollY > 24) header.classList.add("scrolled");
+    var y = window.scrollY;
+    if (y > 24) header.classList.add("scrolled");
     else header.classList.remove("scrolled");
+    // hide on downward scroll, reveal instantly on ANY upward scroll
+    if (y > lastY && y > 120) header.classList.add("hidden-up");
+    else if (y < lastY) header.classList.remove("hidden-up");
+    if (y <= 4) header.classList.remove("hidden-up");
+    lastY = y;
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---- mobile nav toggle ---- */
+  /* ---- mobile nav drawer ---- */
   var navToggle = doc.getElementById("navToggle");
   var mobileNav = doc.getElementById("mobileNav");
-  if (navToggle && mobileNav) {
+  var navScrim = doc.getElementById("navScrim");
+
+  // Relocate drawer + scrim to <body> so no transformed/filtered ancestor
+  // (the header uses backdrop-filter) becomes their containing block.
+  if (mobileNav && mobileNav.parentElement !== doc.body) doc.body.appendChild(mobileNav);
+  if (navScrim && navScrim.parentElement !== doc.body) doc.body.appendChild(navScrim);
+
+  if (navToggle && mobileNav && navScrim) {
+    // Drawer + scrim stay in the DOM at all times; open/close is purely the
+    // .open class (closed = translated off-canvas + visibility:hidden). This
+    // avoids display:none -> transition races so the slide always animates.
+    mobileNav.hidden = false;
+    navScrim.hidden = false;
+    var navOpen = false;
     var setNav = function (open) {
+      navOpen = open;
       navToggle.setAttribute("aria-expanded", String(open));
-      if (open) {
-        mobileNav.hidden = false;
-        navToggle.setAttribute("aria-label", "Close menu");
-      } else {
-        mobileNav.hidden = true;
-        navToggle.setAttribute("aria-label", "Open menu");
-      }
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      mobileNav.classList.toggle("open", open);
+      navScrim.classList.toggle("open", open);
+      doc.body.style.overflow = open ? "hidden" : "";
     };
-    navToggle.addEventListener("click", function () {
-      setNav(mobileNav.hidden);
-    });
+    navToggle.addEventListener("click", function () { setNav(!navOpen); });
     // close when a link is tapped
     mobileNav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") setNav(false);
+      if (e.target.closest("a")) setNav(false);
+    });
+    // close when the scrim (page area) is tapped
+    navScrim.addEventListener("click", function () { setNav(false); });
+    // close on Escape
+    doc.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navOpen) setNav(false);
     });
     // close on resize to desktop
     window.addEventListener("resize", function () {
