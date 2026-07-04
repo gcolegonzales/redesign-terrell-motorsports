@@ -32,6 +32,7 @@
   var navToggle = doc.getElementById("navToggle");
   var mobileNav = doc.getElementById("mobileNav");
   var navScrim = doc.getElementById("navScrim");
+  var navClose = doc.getElementById("navClose");
 
   // Relocate drawer + scrim to <body> so no transformed/filtered ancestor
   // (the header uses backdrop-filter) becomes their containing block.
@@ -75,6 +76,9 @@
 
     var setNav = function (open) {
       navOpen = open;
+      // Keep the header (and its hamburger) on-screen while the drawer is open,
+      // so opening never depends on the header's scroll-hide state.
+      if (open && header) header.classList.remove("hidden-up");
       navToggle.setAttribute("aria-expanded", String(open));
       navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       mobileNav.classList.toggle("open", open);
@@ -86,8 +90,10 @@
       if (open) {
         setInert(true);
         mobileNav.addEventListener("keydown", onTrapKey);
-        var f = focusableInDrawer();
-        if (f.length) window.setTimeout(function () { f[0].focus(); }, 60);
+        // Focus the in-panel close first so it's the tab entry point; use
+        // preventScroll so focusing never nudges/jumps the page. (G3)
+        var target = navClose || focusableInDrawer()[0];
+        if (target) window.setTimeout(function () { target.focus({ preventScroll: true }); }, 60);
       } else {
         setInert(false);
         mobileNav.removeEventListener("keydown", onTrapKey);
@@ -99,6 +105,11 @@
       var willOpen = !navOpen;
       setNav(willOpen);
       if (!willOpen) navToggle.focus();
+    });
+    // in-panel close (X) — the single, always-visible close control
+    if (navClose) navClose.addEventListener("click", function () {
+      setNav(false);
+      navToggle.focus({ preventScroll: true });
     });
     // close when a link is tapped (let the anchor navigate; return focus to toggle)
     mobileNav.addEventListener("click", function (e) {

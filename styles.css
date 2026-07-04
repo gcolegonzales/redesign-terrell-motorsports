@@ -183,9 +183,9 @@ h1,h2,h3,h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1.05
   -webkit-tap-highlight-color: transparent; user-select: none;
 }
 .nav-toggle span { width: 20px; height: 2px; background: var(--ink); transition: transform .25s var(--ease), opacity .2s; }
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Hamburger stays a hamburger (opener). The single close control is the
+   in-panel X (#navClose), which is always visible when the drawer is open —
+   even after the header scrolls away. */
 
 /* ---------- off-canvas drawer + scrim ---------- */
 .nav-scrim {
@@ -213,6 +213,17 @@ h1,h2,h3,h4 { font-family: var(--font-disp); font-weight: 700; line-height: 1.05
 }
 .mobile-nav[hidden] { display: none; }
 .mobile-nav.open { transform: translateX(0); visibility: visible; pointer-events: auto; }
+/* In-panel close (X): the single, always-visible close control. Sits inside
+   the drawer so it stays in the viewport at any scroll position. */
+.mobile-nav-close {
+  position: absolute; top: calc(env(safe-area-inset-top, 0px) + 1rem); right: clamp(1.1rem, 5vw, 1.5rem);
+  width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid var(--line-strong); border-radius: 6px;
+  color: var(--ink); cursor: pointer; z-index: 2;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.mobile-nav-close:hover { background: rgba(255,255,255,.06); border-color: var(--accent-soft); }
 .mobile-nav a {
   font-family: var(--font-disp); text-transform: uppercase; letter-spacing: .05em;
   font-size: 1.05rem; padding: .95rem .2rem; border-bottom: 1px solid var(--line);
